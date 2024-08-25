@@ -60,9 +60,7 @@ Sigue estos pasos para configurar el proyecto localmente:
 
    MONGO_URI=<Tu cadena de conexión de MongoDB>
    EMAIL_USER=<Tu dirección de correo electrónico>
-   CLIENT_ID=<Tu ID de cliente de Google OAuth2>
-   CLIENT_SECRET=<Tu secreto de cliente de Google OAuth2>
-   REFRESH_TOKEN=<Tu token de actualización de Google OAuth2>
+   CLIENT_PASS=<Tu Contraseña del correo>
 
 6. Ejecutar los servidores de desarrollo:
 
