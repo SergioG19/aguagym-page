@@ -7,11 +7,6 @@
 - [Características](#características)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Configuración e Instalación](#configuración-e-instalación)
-- [Uso](#uso)
-- [Integración de API](#integración-de-api)
-- [Estructura de Carpetas](#estructura-de-carpetas)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 
 ## Características
 
