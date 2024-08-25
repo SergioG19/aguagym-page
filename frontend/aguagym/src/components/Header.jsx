@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState } from 'react';
 import logo from '../assets/4600d925-5c63-45f1-8808-502ebc077dcd.png'; 
 
@@ -10,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <header className="custom-bg-color text-white shadow-lg fixed w-full z-50 top-0">
+    <header className="custom-bg-color text-white shadow-lg static w-full z-50 top-0">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -21,22 +20,22 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           <a href="#about-us" className="relative hover:text-secondary menu-link">
-            About Us
+            Nosotros
           </a>
           <a href="#activities" className="relative hover:text-secondary menu-link">
-            Activities
+            Actividades
           </a>
           <a href="#testimonials" className="relative hover:text-secondary menu-link">
-            Testimonials
+            Testimonios
           </a>
           <a href="#pricing" className="relative hover:text-secondary menu-link">
-            Pricing
+            Precios
           </a>
           <a href="#blog" className="relative hover:text-secondary menu-link">
             Blog
           </a>
           <a href="#contact" className="relative hover:text-secondary menu-link">
-            Contact
+            Contacto
           </a>
         </nav>
         {/* Mobile Menu Button */}

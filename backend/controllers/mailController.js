@@ -1,4 +1,3 @@
-// backend/controllers/mailController.js
 const Reservation = require('../models/reservationModel');
 const nodemailer = require('nodemailer');
 
@@ -21,7 +20,7 @@ exports.createReservation = async (req, res) => {
       from: process.env.EMAIL_USER,
       to: req.body.email,
       subject: 'Confirmación de Membresía en Aguagym',
-      text: `Hola ${req.body.firstName},\n\nGracias por completar el formulario para unirte a Aguagym. Estamos encantados de darte la bienvenida como parte de nuestra comunidad.\n\nTu plan seleccionado: ${req.body.membership}\n\nNos pondremos en contacto contigo pronto para más detalles.\n\nGracias,\nEl equipo de Aguagym`,
+      text: `Hola ${req.body.firstName},\n\nGracias por completar el formulario para unirte a Aguagym. Estamos encantados de darte la bienvenida como parte de nuestra comunidad.\n\nTu plan seleccionado: ${req.body.membership}\n\nNos pondremos en contacto contigo pronto para más detalles. \n\nGracias,\nEl equipo de Aguagym`,
     };
 
     // Enviar el correo

@@ -1,8 +1,8 @@
-// src/components/Blog.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSwimmingPool, faLifeRing, faWater, faSwimmer } from '@fortawesome/free-solid-svg-icons';
+import { useInView } from 'react-intersection-observer';
 
 const Blog = () => {
   const blogs = [
@@ -36,13 +36,18 @@ const Blog = () => {
     },
   ];
 
+  // Uso de useInView para desencadenar animaciones en scroll
+  const [refTitle, inViewTitle] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [refCards, inViewCards] = useInView({ triggerOnce: true, threshold: 0.2 });
+
   return (
     <section id="blog" className="py-16 bg-gray-200 text-gray-800">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
+          ref={refTitle}
           className="text-4xl md:text-5xl font-bold mb-8 relative inline-block"
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inViewTitle ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
           Blog
@@ -51,13 +56,19 @@ const Blog = () => {
           </div>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          ref={refCards}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          initial={{ opacity: 0 }}
+          animate={inViewCards ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
           {blogs.map((blog) => (
             <motion.div
               key={blog.id}
               className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={inViewCards ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.2 * blog.id }}
             >
               <div className="flex justify-center mb-4">
@@ -75,7 +86,7 @@ const Blog = () => {
               </a>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

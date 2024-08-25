@@ -1,12 +1,12 @@
-// src/components/Activities.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSwimmer, faRunning, faBiking } from '@fortawesome/free-solid-svg-icons';
+import { useInView } from 'react-intersection-observer';
 
-const API_KEY = '31ea8bf1ae5ca7854e8e6bc99187b9fd'; // Reemplaza con tu clave API de OpenWeather
-const CITY_ID = '3625542'; // Reemplaza con la ID de la ciudad de la actividad (consulta el ID en OpenWeather)
+const API_KEY = '31ea8bf1ae5ca7854e8e6bc99187b9fd'; 
+const CITY_ID = '3625542'; 
 
 const Activities = () => {
   const [activities] = useState([
@@ -62,13 +62,19 @@ const Activities = () => {
     return forecast ? forecast.weather[0] : null;
   };
 
+  // Uso de useInView para desencadenar animaciones en scroll
+  const [refTitle, inViewTitle] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [refSubtitle, inViewSubtitle] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [refCards, inViewCards] = useInView({ triggerOnce: true, threshold: 0.2 });
+
   return (
     <section id="activities" className="py-16 bg-gray-100 text-gray-800">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
+          ref={refTitle}
           className="text-4xl md:text-5xl font-bold mb-8 relative inline-block"
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inViewTitle ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
           Próximas Actividades
@@ -78,16 +84,23 @@ const Activities = () => {
         </motion.h2>
 
         <motion.p
+          ref={refSubtitle}
           className="text-lg md:text-xl mb-12"
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inViewSubtitle ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.3 }}
         >
           Únete a nuestras emocionantes actividades y aprovecha al máximo tu tiempo en Aguagym.
           Mantente actualizado con el pronóstico del clima para cada evento.
         </motion.p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          ref={refCards}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0 }}
+          animate={inViewCards ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
           {activities.map((activity) => {
             const weatherInfo = getWeatherForDate(activity.date);
 
@@ -96,7 +109,7 @@ const Activities = () => {
                 key={activity.id}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={inViewCards ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 * activity.id }}
               >
                 <div className="flex justify-center mb-4">
@@ -127,7 +140,7 @@ const Activities = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

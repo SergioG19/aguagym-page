@@ -1,4 +1,3 @@
-// src/components/HeroSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -6,17 +5,17 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative h-[98vh] flex items-center justify-center text-center text-white mt-[4rem]"
+      className="relative h-[98vh] flex items-center justify-center text-center text-white"
     >
       {/* Video Background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="https://cdn.pixabay.com/video/2021/06/17/78059-564490562_large.mp4" // Reemplaza con tu enlace de video
+        src="https://cdn.pixabay.com/video/2021/06/17/78059-564490562_large.mp4" 
         type="video/mp4"
         autoPlay
         loop
         muted
-        style={{ filter: 'brightness(40%)' }} // Apply dark filter
+        style={{ filter: 'brightness(40%)' }} 
       />
 
 
