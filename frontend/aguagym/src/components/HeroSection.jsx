@@ -45,7 +45,7 @@ const HeroSection = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 1 }}
         >
-          Get Started
+          Empezar
         </motion.a>
       </div>
     </section>

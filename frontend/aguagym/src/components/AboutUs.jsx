@@ -20,7 +20,7 @@ const AboutUs = () => {
           Sobre Nosotros
           {/* Subrayado con olas */}
           <div className="absolute left-0 bottom-0 w-full h-2">
-            <div className="wave" style={{ animation: 'wave 3s linear infinite' }}></div>
+            <div className="wave" style={{ animation: 'wave 6s linear infinite' }}></div>
           </div>
         </motion.h2>
 
