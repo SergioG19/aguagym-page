@@ -40,12 +40,15 @@ const Blog = () => {
     <section id="blog" className="py-16 bg-gray-200 text-gray-800">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-8"
+          className="text-4xl md:text-5xl font-bold mb-8 relative inline-block"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           Blog
+          <div className="absolute left-0 bottom-0 w-full h-2">
+            <div className="wave" style={{ animation: 'wave 2s linear infinite' }}></div>
+          </div>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

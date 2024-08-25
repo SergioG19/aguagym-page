@@ -7,7 +7,7 @@ import Activities from './components/Activities';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import Blog from './components/Blog';
-//import ContactForm from './components/ContactForm';
+import ContactForm from './components/ContactForm';
 //import Footer from './components/Footer';
 
 function App() {
@@ -45,6 +45,10 @@ function App() {
           <Blog />
         </section>
 
+{/* Contact Form Section */}
+<section id="contact">
+          <ContactForm />
+        </section>
       </main>
     </div>
   );
